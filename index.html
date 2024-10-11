@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Landing Page</title>
+    <style>
+        /* General Styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa, #ffffff, #e9ecef);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Container Styling */
+        .container {
+            text-align: center;
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0px 4px 30px rgba(43, 102, 158, 0.3);
+            border: 2px solid #2B669E;
+        }
+
+        /* Logo Styling */
+        .logo img {
+            max-width: 120px;
+            margin-bottom: 20px;
+        }
+
+        /* Paragraph Styling */
+        .content p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        /* Checkbox Section */
+        .accept-section {
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #2B669E;
+        }
+
+        /* Button Styling */
+        .continue-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            background: #2B669E;
+            color: white;
+            border-radius: 50px;
+            transition: background 0.3s;
+            box-shadow: 0px 8px 20px rgba(43, 102, 158, 0.3);
+            cursor: not-allowed;
+        }
+
+        .continue-btn.active {
+            cursor: pointer;
+            background: #1d4d7b;
+        }
+
+        .continue-btn:hover.active {
+            background: #16436d;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .content p {
+                font-size: 16px;
+            }
+
+            .continue-btn {
+                padding: 12px 25px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo Section -->
+        <div class="logo">
+            <img src="lookers-logo.png" alt="Company Logo">
+        </div>
+
+        <!-- Content Section -->
+        <div class="content">
+            <p>
+                Welcome to The Lookers Group’s Employee Engagement Survey! Your feedback is crucial in helping Lookers create a better workplace environment. We value your honest opinions, and your input will guide improvements across the organisation. Please click the button below to continue to the survey after accepting the terms.
+            </p>
+        </div>
+
+        <!-- Accept Terms Checkbox -->
+        <div class="accept-section">
+            <input type="checkbox" id="accept-terms">
+            <label for="accept-terms">I accept the <a href="TandCs.html">terms and conditions</a></label>
+        </div>
+
+        <!-- Button Section -->
+        <a href="https://your-survey-link.com" class="continue-btn" id="continue-btn">Continue to the Survey</a>
+    </div>
+
+    <script>
+        const checkbox = document.getElementById('accept-terms');
+        const continueBtn = document.getElementById('continue-btn');
+
+        checkbox.addEventListener('change', function() {
+            if (this.checked) {
+                continueBtn.classList.add('active');
+                continueBtn.removeAttribute('style');  // Remove the cursor: not-allowed style
+            } else {
+                continueBtn.classList.remove('active');
+                continueBtn.setAttribute('style', 'cursor: not-allowed;');
+            }
+        });
+
+        continueBtn.addEventListener('click', function(event) {
+            if (!checkbox.checked) {
+                event.preventDefault();  // Prevent the button from navigating if checkbox not checked
+            }
+        });
+    </script>
+</body>
+</html>
